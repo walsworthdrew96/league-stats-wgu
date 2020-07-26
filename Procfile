@@ -1,0 +1,1 @@
+web: waitress-serve --listen=*:8000 league_stats.wsgi:application

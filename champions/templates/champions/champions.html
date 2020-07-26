@@ -1,0 +1,50 @@
+{% extends 'champions/main.html' %}
+
+{% block content %}
+{% load static %}
+{% load champions_extras %}
+<br>
+<h2>Click a Champion image for more info</h2>
+<h2>Champions included in prototype</h2>
+<div class="row">
+    <div class="d-flex bd-highlight mb-3 flex-wrap">
+        {% with cur_champion_id=0 %}
+        {% for champion_img_dir in champion_img_dirs %}
+            {% with champion_objs|list_item_minus_one:forloop.counter as champion %}
+            {% with champion_objs|champion_ability_q1_is_null:forloop.counter as champ_has_abilities %}
+                {% if champ_has_abilities %}
+                <div class="p-2 bd-highlight">
+                    <a href="/champion/{{champion.name|space_to_underscore}}">
+                        <img src="{% static champion_img_dir %}" alt="" height="120">
+                    </a>
+                </div>
+                {% endif %}
+            {% endwith %}
+            {% endwith %}
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>
+
+<br>
+<h2>Champions excluded from prototype</h2>
+<div class="row">
+    <div class="d-flex bd-highlight mb-3 flex-wrap">
+        {% with cur_champion_id=0 %}
+        {% for champion_img_dir in champion_img_dirs %}
+            {% with champion_objs|list_item_minus_one:forloop.counter as champion %}
+            {% with champion_objs|champion_ability_q1_is_null:forloop.counter as champ_has_abilities %}
+                {% if not champ_has_abilities %}
+                    <div class="p-2 bd-highlight">
+                        <img src="{% static champion_img_dir %}" alt="" height="120" style="filter: grayscale(100%);">
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% endwith %}
+        {% endfor %}
+        {% endwith %}
+    </div>
+</div>
+
+
+{% endblock content %}

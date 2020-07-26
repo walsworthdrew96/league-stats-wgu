@@ -1,0 +1,358 @@
+{% extends 'champions/main.html' %}
+
+{% block content %}
+{% load static %}
+{% load champions_extras %}
+<br>
+<div class="row">
+    <div class="col-md-5">
+        <div class="card card-body">
+            <h5>{{ champion_name }}</h5>
+            <img src="{% static champion_img_path %}" alt="" height="120" width="120">
+            <hr>
+            <div class="card card-body">
+                <div class="d-flex flex-row">
+                    <div class="p-2">
+                        <h5>Base Statistics</h5>
+                        <table class="table table-sm" style="font-size: 12px;">
+                            <tr>
+                                <th>Statistic</th>
+                                <th>Value</th>
+                            </tr>
+                            <tr>
+                                <td>Health:</td>
+                                <td>{{champion.health}}</td>
+                            </tr>
+                            <tr>
+                                <td>Health Scaling:</td>
+                                <td>{{champion.health_scaling}}</td>
+                            </tr>
+                            <tr>
+                                <td>Health Regen:</td>
+                                <td>{{champion.health_regen}}</td>
+                            </tr>
+                            <tr>
+                                <td>Health Regen Scaling:</td>
+                                <td>{{champion.health_regen_scaling}}</td>
+                            </tr>
+                            <tr>
+                                <td>Mana:</td>
+                                <td>{{champion.mana}}</td>
+                            </tr>
+                            <tr>
+                                <td>Mana Scaling:</td>
+                                <td>{{champion.mana_scaling}}</td>
+                            </tr>
+                            <tr>
+                                <td>Mana Regen:</td>
+                                <td>{{champion.mana_regen}}</td>
+                            </tr>
+                            <tr>
+                                <td>Mana Regen Scaling:</td>
+                                <td>{{champion.mana_regen_scaling}}</td>
+                            </tr>
+                            <tr>
+                                <td>Attack Damage:</td>
+                                <td>{{champion.attack_damage}}</td>
+                            </tr>
+                            <tr>
+                                <td>Atack Damage Scaling:</td>
+                                <td>{{champion.attack_damage_scaling}}</td>
+                            </tr>
+                            <tr>
+                                <td>Attack Speed:</td>
+                                <td>{{champion.attack_speed}}</td>
+                            </tr>
+                            <tr>
+                                <td>Attack Speed Scaling:</td>
+                                <td>{{champion.attack_speed_scaling}}</td>
+                            </tr>
+                            <tr>
+                                <td>Armor:</td>
+                                <td>{{champion.armor}}</td>
+                            </tr>
+                            <tr>
+                                <td>Armor Scaling:</td>
+                                <td>{{champion.armor_scaling}}</td>
+                            </tr>
+                            <tr>
+                                <td>Magic Resist:</td>
+                                <td>{{champion.magic_resist}}</td>
+                            </tr>
+                            <tr>
+                                <td>Magic Resist Scaling:</td>
+                                <td>{{champion.magic_resist_scaling}}</td>
+                            </tr>
+                            <tr>
+                                <td>Movement Speed:</td>
+                                <td>{{champion.movement_speed}}</td>
+                            </tr>
+                            <tr>
+                                <td>Range:</td>
+                                <td>{{champion.range}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="p-2">
+                        <h5>Abilities</h5>
+                        <table class="table table-sm" style="font-size: 12px;">
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Cooldown Ranks</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                            <tr>
+                                <td><h5>Q</h5></td>
+                                {% if champion.ability_q1 is not None %}
+                                <td>
+                                    {% with ability_img_dirs|get_value_from_dict:'q' as q_img_dir %}
+                                    <img src="{% static q_img_dir %}" alt="" height="50" width="50">
+                                    {% endwith %}
+                                </td>
+                                <td>{{champion.ability_q1}}</td>
+                                {% with champion.ability_q1.cooldown_ranks|split_list:'/' as cooldown_ranks%}
+                                {% for cooldown_rank in cooldown_ranks %}
+                                <td>{{cooldown_rank}}</td>
+                                {% endfor %}
+                                {% endwith %}
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td><h5>W</h5></td>
+                                {% if champion.ability_w1 is not None %}
+                                <td>
+                                    {% with ability_img_dirs|get_value_from_dict:'w' as w_img_dir %}
+                                    <img src="{% static w_img_dir %}" alt="" height="50" width="50">
+                                    {% endwith %}
+                                </td>
+                                <td>{{champion.ability_w1}}</td>
+                                {% with champion.ability_w1.cooldown_ranks|split_list:'/' as cooldown_ranks %}
+                                {% for cooldown_rank in cooldown_ranks %}
+                                <td>{{cooldown_rank}}</td>
+                                {% endfor %}
+                                {% endwith %}
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td><h5>E</h5></td>
+                                {% if champion.ability_e1 is not None %}
+                                <td>
+                                    {% with ability_img_dirs|get_value_from_dict:'e' as e_img_dir %}
+                                    <img src="{% static e_img_dir %}" alt="" height="50" width="50">
+                                    {% endwith %}
+                                </td>
+                                <td>{{champion.ability_e1}}</td>
+                                {% with champion.ability_e1.cooldown_ranks|split_list:'/' as cooldown_ranks %}
+                                {% for cooldown_rank in cooldown_ranks %}
+                                <td>{{cooldown_rank}}</td>
+                                {% endfor %}
+                                {% endwith %}
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td><h5>R</h5></td>
+                                {% if champion.ability_r1 is not None %}
+                                <td>
+                                    {% with ability_img_dirs|get_value_from_dict:'r' as r_img_dir %}
+                                    <img src="{% static r_img_dir %}" alt="" height="50" width="50">
+                                    {% endwith %}
+                                </td>
+                                <td>{{champion.ability_r1}}</td>
+                                {% with champion.ability_r1.cooldown_ranks|split_list:'/' as cooldown_ranks %}
+                                {% for cooldown_rank in cooldown_ranks %}
+                                <td>{{cooldown_rank}}</td>
+                                {% endfor %}
+                                {% endwith %}
+                                {% endif %}
+                            </tr>
+                            <!--                            SECOND ABILITY SET-->
+                            {% if champion.ability_q2 is not None %}
+                            <tr>
+                                <td><h5>Q2</h5></td>
+                                <td>
+                                    {% with ability_img_dirs|get_value_from_dict:'q2' as q2_img_dir %}
+                                    <img src="{% static q2_img_dir %}" alt="" height="50" width="50">
+                                    {% endwith %}
+                                </td>
+                                <td>{{champion.ability_q2}}</td>
+                                {% with champion.ability_q2.cooldown_ranks|split_list:'/' as cooldown_ranks%}
+                                {% for cooldown_rank in cooldown_ranks %}
+                                <td>{{cooldown_rank}}</td>
+                                {% endfor %}
+                                {% endwith %}
+                            </tr>
+                            {% endif %}
+                            {% if champion.ability_w2 is not None %}
+                            <tr>
+                                <td><h5>W2</h5></td>
+                                <td>
+                                    {% with ability_img_dirs|get_value_from_dict:'w2' as w2_img_dir %}
+                                    <img src="{% static w2_img_dir %}" alt="" height="50" width="50">
+                                    {% endwith %}
+                                </td>
+                                <td>{{champion.ability_w2}}</td>
+                                {% with champion.ability_w2.cooldown_ranks|split_list:'/' as cooldown_ranks %}
+                                {% for cooldown_rank in cooldown_ranks %}
+                                <td>{{cooldown_rank}}</td>
+                                {% endfor %}
+                                {% endwith %}
+                            </tr>
+                            {% endif %}
+                            {% if champion.ability_e2 is not None %}
+                            <tr>
+                                <td><h5>E2</h5></td>
+                                <td>
+                                    {% with ability_img_dirs|get_value_from_dict:'e2' as e2_img_dir %}
+                                    <img src="{% static e2_img_dir %}" alt="" height="50" width="50">
+                                    {% endwith %}
+                                </td>
+                                <td>{{champion.ability_e2}}</td>
+                                {% with champion.ability_e2.cooldown_ranks|split_list:'/' as cooldown_ranks %}
+                                {% for cooldown_rank in cooldown_ranks %}
+                                <td>{{cooldown_rank}}</td>
+                                {% endfor %}
+                                {% endwith %}
+                            </tr>
+                            {% endif %}
+                            {% if champion.ability_r2 is not None %}
+                            <tr>
+                                <td><h5>R2</h5></td>
+                                <td>
+                                    {% with ability_img_dirs|get_value_from_dict:'r2' as r2_img_dir %}
+                                    <img src="{% static r2_img_dir %}" alt="" height="50" width="50">
+                                    {% endwith %}
+                                </td>
+                                <td>{{champion.ability_r2}}</td>
+                                {% with champion.ability_r2.cooldown_ranks|split_list:'/' as cooldown_ranks %}
+                                {% for cooldown_rank in cooldown_ranks %}
+                                <td>{{cooldown_rank}}</td>
+                                {% endfor %}
+                                {% endwith %}
+                            </tr>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="card card-body">
+            <h5>Graph comparison</h5>
+            <hr>
+            <div id="id_plot_div">
+            </div>
+            <div class="container-fluid">
+                <form id="champion-graph-form" method="get">
+                    <div id="form_group_div" class="form-group">
+                        <label for="form_group_div">Select a statistic</label>
+                        <select class="form-control" id="stat_select">
+                            {% for effect_type in effect_types %}
+                            <option>{{effect_type}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="btn btn-primary align-self-end" type="submit" value="Change Graph">Change Graph
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascript %}
+<script>
+//change_input settings
+
+var select_element = document.getElementById("stat_select")
+var option_element = select_element.options[select_element.selectedIndex];
+console.log(option_element.value)
+console.log(option_element.text)
+var selected_stat = option_element.value
+var plot_div_element = document.getElementById('id_plot_div')
+console.log('plot_div_element: '+plot_div_element)
+
+$("#champion-graph-form").submit(function (e) {
+    e.preventDefault();
+    selected_stat = select_element.options[select_element.selectedIndex].value
+    console.log("selected: "+selected_stat)
+    // GET AJAX request
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'get_graph_data' %}",
+        data: {'selected_stat': selected_stat},
+        success: function (response) {
+//        new_graph_html = plot_div_element.write(response['plot_divider'])
+//        console.log('new_graph_html: ' + new_graph_html)
+//        plot_div_element.innerHTML = new_graph_html
+
+//        document.write(response['plot_divider'])
+
+//        let dom = new DOMParser().parseFromString(response['plot_divider'], 'text/html')
+//        let new_element = dom.body.firstElementChild;
+//        plot_div_element.innerHTML = new_element
+
+        let new_element = document.createRange().createContextualFragment(response['plot_divider']);
+
+        function removeAllChildNodes(parent) {
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+        }
+        removeAllChildNodes(plot_div_element)
+        plot_div_element.appendChild(new_element)
+        },
+        error: function (response) {
+            console.log(response)
+        }
+    })
+})
+
+
+//get select input item
+
+var select_element = document.getElementById("stat_select")
+var option_element = select_element.options[select_element.selectedIndex];
+console.log(option_element.value)
+console.log(option_element.text)
+var selected_stat = option_element.value
+var plot_div_element = document.getElementById('id_plot_div')
+console.log('plot_div_element: '+plot_div_element)
+
+$("#champion-graph-form").submit(function (e) {
+    e.preventDefault();
+    selected_stat = select_element.options[select_element.selectedIndex].value
+    console.log("selected: "+selected_stat)
+    // GET AJAX request
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'get_graph_data' %}",
+        data: {'selected_stat': selected_stat},
+        success: function (response) {
+
+        let new_element = document.createRange().createContextualFragment(response['plot_divider']);
+
+        function removeAllChildNodes(parent) {
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+        }
+
+        removeAllChildNodes(plot_div_element)
+        plot_div_element.appendChild(new_element)
+        },
+        error: function (response) {
+            console.log(response)
+        }
+    })
+})
+</script>
+{% endblock javascript %}
