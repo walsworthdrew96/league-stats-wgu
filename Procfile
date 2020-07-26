@@ -1,1 +1,1 @@
-web: gunicorn mysite.wsgi -b :$PORT
+web: gunicorn league_stats.wsgi -b :$PORT
