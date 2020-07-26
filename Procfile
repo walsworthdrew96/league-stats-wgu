@@ -1,1 +1,1 @@
-web: waitress-serve --listen=*:8000 league_stats.wsgi:application
+web: gunicorn mysite.wsgi -b :$PORT
