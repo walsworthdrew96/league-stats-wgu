@@ -27,5 +27,6 @@ soupsieve==2.0.1
 virtualenv==20.0.28
 waitress==1.4.4
 Werkzeug==1.0.1
+whitenoise==5.1.0
 wincertstore==0.2
 zipp==3.1.0
