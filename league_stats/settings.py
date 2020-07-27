@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '64p+*cw$716(h(kmd(c$3oxf)qt#@375)0mt(&(e!_%h)kqu$c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'desktop-8qidbdg', 'league-stats-wgu.herokuapp.com']
 
