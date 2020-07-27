@@ -16,7 +16,6 @@ Ahri,Q,Orb of Deception,65 / 70 / 75 / 80 / 85 MANA,MANA,,,,,7,,Mixed Damage,TOT
 Ahri,W,Fox-Fire,40 MANA,MANA,,,,,9 / 8 / 7 / 6 / 5,,Magic Damage,TOTAL SINGLE TARGET DAMAGE:,64 / 104 / 144 / 184 / 224 ,(+ 48% AP),% AP,,
 Ahri,E,Charm,70 MANA,MANA,,,,,12,,Magic Damage,MAGIC DAMAGE:,60 / 90 / 120 / 150 / 180, (+ 40% AP),% AP,,
 Ahri,E,Charm,70 MANA,MANA,,,,,12,,Charm Duration,CHARM DURATION:,1.4 / 1.55 / 1.7 / 1.85 / 2,,,,
-Ahri,E,Charm,70 MANA,MANA,,,,,12,,Charm Duration,CHARM DURATION:,1.4 / 1.55 / 1.7 / 1.85 / 2,,,,
 Ahri,R,Spirit Rush,100 MANA,MANA,,,,,130 / 105 / 80,,Magic Damage,MAXIMUM SINGLE TARGET DAMAGE:,180 / 270 / 360, (+ 105% AP),% AP,,
 Akali,Q,Five Point Strike,120 / 115 / 110 / 105 / 100 ENERGY,ENERGY,,,,,1.5,,Magic Damage,MAGIC DAMAGE:,30 / 55 / 80 / 105 / 130 ,(+ 65% AD),% AD, (+ 65% AP),% AP
 Akali,W,Twilight Shroud,,,,,,,20,,Movement Speed,BONUS MOVEMENT SPEED:,30 / 35 / 40 / 45 / 50%,,,,
@@ -99,7 +98,6 @@ Heimerdinger,W,Hextech Micro-Rockets,50 / 60 / 70 / 80 / 90 MANA,MANA,,,,,11 / 1
 Heimerdinger,W2,Hextech Rocket Swarm,,,,,,,11 / 10 / 9 / 8 / 7,,Magic Damage,INITIAL ROCKET MAGIC DAMAGE:,135 / 180 / 225 ,(+ 45% AP),% AP,,
 Heimerdinger,W2,Hextech Rocket Swarm,,,,,,,11 / 10 / 9 / 8 / 7,,Magic Damage,TOTAL MINION MAGIC DAMAGE:,2700 / 3600 / 4500 ,(+ 900% AP),% AP,,
 Heimerdinger,W2,Hextech Rocket Swarm,,,,,,,11 / 10 / 9 / 8 / 7,,Magic Damage,2-5 ROCKET MAGIC DAMAGE:,32 / 45 / 58, (+ 12% AP),% AP,,
-Heimerdinger,W2,Hextech Rocket Swarm,,,,,,,11 / 10 / 9 / 8 / 7,,Magic Damage,TOTAL MINION MAGIC DAMAGE:,2700 / 3600 / 4500 ,(+ 900% AP),% AP,,
 Heimerdinger,E,CH-2 Electron Storm Grenade,85 MANA,MANA,,,,,12,,Magic Damage,MAGIC DAMAGE:,60 / 100 / 140 / 180 / 220 ,(+ 60% AP),% AP,,
 Heimerdinger,E2,CH-3X Lightning Grenade,,,,,,,12,,Magic Damage,MAGIC DAMAGE:,100 / 200 / 300 ,(+ 60% AP),% AP,,
 Heimerdinger,R,UPGRADE!!!,100 MANA,MANA,,,,,100 / 85 / 70,,,,,,,,
