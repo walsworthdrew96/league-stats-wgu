@@ -1157,33 +1157,33 @@ def import_from_data_csv(body_string, *args, **kwargs):
 
             # Link to Effects
             print('effect_rows:', effect_rows)
-            for effect_row in effect_rows:
-                # Link Effect to EffectType
-                try:
-                    print('effect_type:', effect_type)
-                    effect_row.effect_type = EffectType.objects.get(name=effect_type)
-                    print('effect_type_obj:', EffectType.objects.get(name=effect_type))
-                    effect_row.effect_type.save()
-                except Exception as e:
-                    print('link to effect exception (effect type exception):', e)
-                try:
-                    print('effect_scaling_type:', effect_scaling_type)
-                    effect_row.scaling_type = ScalingType.objects.get(name=effect_scaling_type)
-                    print('effect_scaling_type_obj:', ScalingType.objects.get(name=effect_scaling_type))
-                    effect_row.scaling_type.save()
-                except Exception as e:
-                    print('link to effect exception: (scaling type exception)', e)
-                try:
-                    print('effect_scaling2_type:', effect_scaling2_type)
-                    effect_row.scaling2_type = ScalingType.objects.get(name=effect_scaling2_type)
-                    print('effect_scaling2_type_obj:', ScalingType.objects.get(name=effect_scaling2_type))
-                    effect_row.scaling2_type.save()
-                except Exception as e:
-                    print('link to effect exception: (scaling2 type exception)', e)
-                try:
-                    effect_row.save()
-                except Exception as e:
-                    print('link to effect exception:', e)
+            effect_row = Effect.objects.get(effect_ability_name=ability, effect_name=effect_name)
+            # Link Effect to EffectTypes
+            try:
+                print('effect_type:', effect_type)
+                effect_row.effect_type = EffectType.objects.get(name=effect_type)
+                print('effect_type_obj:', EffectType.objects.get(name=effect_type))
+                effect_row.effect_type.save()
+            except Exception as e:
+                print('link to effect exception (effect type exception):', e)
+            try:
+                print('effect_scaling_type:', effect_scaling_type)
+                effect_row.scaling_type = ScalingType.objects.get(name=effect_scaling_type)
+                print('effect_scaling_type_obj:', ScalingType.objects.get(name=effect_scaling_type))
+                effect_row.scaling_type.save()
+            except Exception as e:
+                print('link to effect exception: (scaling type exception)', e)
+            try:
+                print('effect_scaling2_type:', effect_scaling2_type)
+                effect_row.scaling2_type = ScalingType.objects.get(name=effect_scaling2_type)
+                print('effect_scaling2_type_obj:', ScalingType.objects.get(name=effect_scaling2_type))
+                effect_row.scaling2_type.save()
+            except Exception as e:
+                print('link to effect exception: (scaling2 type exception)', e)
+            try:
+                effect_row.save()
+            except Exception as e:
+                print('link to effect exception:', e)
 
             # Save ability after it's effects are saved.
             # print('BEFORE SAVE')
