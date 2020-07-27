@@ -127,6 +127,10 @@ def champions(request):
         champion_square_fp = os.path.join('images/champion_square_icons/', c.name.replace(' ', '_') + 'Square.png')
         db_champion_img_dirs.append(champion_square_fp)
 
+    # sort both file lists to give correct output in the template
+    champion_img_dirs.sort()
+    db_champion_img_dirs.sort()
+
     # final context to be sent to template
     context = {'champion_objs': champion_objs,
                'champion_img_dirs': champion_img_dirs,
