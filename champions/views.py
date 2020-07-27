@@ -27,7 +27,7 @@ from .simulation_types import SimulationChampion
 # Import BASE_DIR
 from django.conf import settings
 
-champion_squares_path = os.path.join(settings.BASE_DIR, 'static\\images\\champion_square_icons\\')
+# champion_squares_path = os.path.join(settings.BASE_DIR, 'static\\images\\champion_square_icons\\')
 
 
 # global variables
@@ -110,9 +110,14 @@ def champions(request):
     champion_objs = Champion.objects.all()
 
     # get all champion img paths
-    global champion_squares_path
+    # global champion_squares_path
+    champion_squares_path = os.path.join(settings.STATIC_ROOT, 'images/champion_square_icons/')
     champion_img_dirs = []
     for f in os.listdir(champion_squares_path):
+        # problem line in remote file...
+        #                BASE_DIR + 'static\\images\\champion_square_icons\\'
+        #                /app/    + 'static\\images\\champion_square_icons\\'
+        # remote error: '/app/static\\images\\champion_square_icons\\'
         if os.path.isfile(os.path.join(champion_squares_path, f)):
             champion_img_dirs.append('images/champion_square_icons/' + f)
 
