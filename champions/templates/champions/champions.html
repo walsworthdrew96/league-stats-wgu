@@ -3,6 +3,8 @@
 {% block content %}
 {% load static %}
 {% load champions_extras %}
+{% get_static_prefix as STATIC_URL %}
+
 <br>
 <h2>Click a Champion image for more info</h2>
 <h2>Champions included in prototype</h2>
@@ -15,6 +17,7 @@
                 {% if champ_has_abilities %}
                 <div class="p-2 bd-highlight">
                     <a href="/champion/{{champion.name|space_to_underscore}}">
+<!--                        <img src="{% static champion_img_dir %}" alt="" height="120">-->
                         <img src="{% static champion_img_dir %}" alt="" height="120">
                     </a>
                 </div>

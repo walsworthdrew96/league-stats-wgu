@@ -27,7 +27,7 @@ from .simulation_types import SimulationChampion
 # Import BASE_DIR
 from django.conf import settings
 
-champion_squares_path = os.path.join(settings.BASE_DIR, 'staticfiles\\static\\images\\champion_square_icons\\')
+champion_squares_path = os.path.join(settings.BASE_DIR, 'static\\images\\champion_square_icons\\')
 
 
 # global variables
@@ -109,14 +109,14 @@ def champions(request):
     # take all champions from the database
     champion_objs = Champion.objects.all()
 
-    # take all effect
-
-    # get all champion image dirs
+    # get all champion img paths
     global champion_squares_path
-    print('champion_squares_path:', champion_squares_path)
-    champion_img_dirs = ['images/champion_square_icons/' + f for f in os.listdir(champion_squares_path) if os.path.isfile(os.path.join(champion_squares_path, f))]
+    champion_img_dirs = []
+    for f in os.listdir(champion_squares_path):
+        if os.path.isfile(os.path.join(champion_squares_path, f)):
+            champion_img_dirs.append('images/champion_square_icons/' + f)
 
-    # get champion image directories for champions in the database
+    # get db champion img paths
     db_champion_img_dirs = []
     for c in champion_objs:
         champion_square_fp = os.path.join('images/champion_square_icons/', c.name.replace(' ', '_') + 'Square.png')
@@ -127,6 +127,9 @@ def champions(request):
                'champion_img_dirs': champion_img_dirs,
                'db_champion_img_dirs': db_champion_img_dirs,
                'champion_squares_path': champion_squares_path, }
+
+    for champion_img_dir in champion_img_dirs:
+        print('champion_img_dir', champion_img_dir)
 
     return render(request, 'champions/champions.html', context)
 
