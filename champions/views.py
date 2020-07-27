@@ -27,6 +27,7 @@ from .simulation_types import SimulationChampion
 # Import BASE_DIR
 from django.conf import settings
 
+
 # champion_squares_path = os.path.join(settings.BASE_DIR, 'static\\images\\champion_square_icons\\')
 
 
@@ -221,29 +222,21 @@ def fight_simulator(request):
             if champion_obj.name is not None:
                 img_dirs['square'] = '/images/champion_square_icons/' + champion_obj.name + 'Square.png'
             if champion_obj.ability_q1 is not None:
-                img_dirs['q'] = os.path.join('/images/ability_icons/',
-                                             fix_filename(champion_obj.ability_q1.name) + '.png')
+                img_dirs['q'] = os.path.join('/images/ability_icons/', fix_filename(champion_obj.ability_q1.name) + '.png')
             if champion_obj.ability_w1 is not None:
-                img_dirs['w'] = os.path.join('/images/ability_icons/',
-                                             fix_filename(champion_obj.ability_w1.name) + '.png')
+                img_dirs['w'] = os.path.join('/images/ability_icons/', fix_filename(champion_obj.ability_w1.name) + '.png')
             if champion_obj.ability_e1 is not None:
-                img_dirs['e'] = os.path.join('/images/ability_icons/',
-                                             fix_filename(champion_obj.ability_e1.name) + '.png')
+                img_dirs['e'] = os.path.join('/images/ability_icons/', fix_filename(champion_obj.ability_e1.name) + '.png')
             if champion_obj.ability_r1 is not None:
-                img_dirs['r'] = os.path.join('/images/ability_icons/',
-                                             fix_filename(champion_obj.ability_r1.name) + '.png')
+                img_dirs['r'] = os.path.join('/images/ability_icons/', fix_filename(champion_obj.ability_r1.name) + '.png')
             if champion_obj.ability_q2 is not None:
-                img_dirs['q2'] = os.path.join('/images/ability_icons/',
-                                              fix_filename(champion_obj.ability_q2.name) + '.png')
+                img_dirs['q2'] = os.path.join('/images/ability_icons/', fix_filename(champion_obj.ability_q2.name) + '.png')
             if champion_obj.ability_w2 is not None:
-                img_dirs['w2'] = os.path.join('/images/ability_icons/',
-                                              fix_filename(champion_obj.ability_w2.name) + '.png')
+                img_dirs['w2'] = os.path.join('/images/ability_icons/', fix_filename(champion_obj.ability_w2.name) + '.png')
             if champion_obj.ability_e2 is not None:
-                img_dirs['e2'] = os.path.join('/images/ability_icons/',
-                                              fix_filename(champion_obj.ability_e2.name) + '.png')
+                img_dirs['e2'] = os.path.join('/images/ability_icons/', fix_filename(champion_obj.ability_e2.name) + '.png')
             if champion_obj.ability_r2 is not None:
-                img_dirs['r2'] = os.path.join('/images/ability_icons/',
-                                              fix_filename(champion_obj.ability_r2.name) + '.png')
+                img_dirs['r2'] = os.path.join('/images/ability_icons/', fix_filename(champion_obj.ability_r2.name) + '.png')
 
             # assign lists to champion dict
             champions_dict['objs'] = champions_with_abilities
@@ -405,12 +398,10 @@ def get_simulation_results(request):
             x_data.append(round[0])
             y_data.append(round[1])
 
-        c1_image_path = 'staticfiles/static/images/champion_square_icons/' + request.GET['c1_select_val'].replace(' ',
-                                                                                                                  '_') + 'Square.png'
+        c1_image_path = os.path.join(settings.STATIC_ROOT, 'images/champion_square_icons/' + request.GET['c1_select_val'].replace(' ', '_') + 'Square.png')
         with open(c1_image_path, "rb") as image_file:
             c1_img = base64.b64encode(image_file.read()).decode('utf-8')
-        c2_image_path = 'staticfiles/static/images/champion_square_icons/' + request.GET['c2_select_val'].replace(' ',
-                                                                                                                  '_') + 'Square.png'
+        c2_image_path = os.path.join(settings.STATIC_ROOT, 'images/champion_square_icons/' + request.GET['c2_select_val'].replace(' ', '_') + 'Square.png')
         with open(c2_image_path, "rb") as image_file:
             c2_img = base64.b64encode(image_file.read()).decode('utf-8')
 
