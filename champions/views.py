@@ -24,6 +24,11 @@ import plotly.graph_objs as go
 # Import simulation types
 from .simulation_types import SimulationChampion
 
+# Import BASE_DIR
+from django.conf import settings
+
+champion_squares_path = os.path.join(settings.BASE_DIR, 'staticfiles\\static\\images\\champion_square_icons\\')
+
 
 # global variables
 # action_history = []
@@ -107,10 +112,9 @@ def champions(request):
     # take all effect
 
     # get all champion image dirs
-    up_one_level = '''\\'''.join(os.path.dirname(__file__).split('''\\''')[:-1])
-    champion_squares_path = os.path.join(up_one_level, 'staticfiles\\static\\images\\champion_square_icons\\')
-    champion_img_dirs = ['images/champion_square_icons/' + f for f in os.listdir(champion_squares_path) if
-                         os.path.isfile(os.path.join(champion_squares_path, f))]
+    global champion_squares_path
+    print('champion_squares_path:', champion_squares_path)
+    champion_img_dirs = ['images/champion_square_icons/' + f for f in os.listdir(champion_squares_path) if os.path.isfile(os.path.join(champion_squares_path, f))]
 
     # get champion image directories for champions in the database
     db_champion_img_dirs = []
@@ -390,11 +394,11 @@ def get_simulation_results(request):
             y_data.append(round[1])
 
         c1_image_path = 'staticfiles/static/images/champion_square_icons/' + request.GET['c1_select_val'].replace(' ',
-                                                                                                      '_') + 'Square.png'
+                                                                                                                  '_') + 'Square.png'
         with open(c1_image_path, "rb") as image_file:
             c1_img = base64.b64encode(image_file.read()).decode('utf-8')
         c2_image_path = 'staticfiles/static/images/champion_square_icons/' + request.GET['c2_select_val'].replace(' ',
-                                                                                                      '_') + 'Square.png'
+                                                                                                                  '_') + 'Square.png'
         with open(c2_image_path, "rb") as image_file:
             c2_img = base64.b64encode(image_file.read()).decode('utf-8')
 
